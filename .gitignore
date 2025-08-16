@@ -1,0 +1,12 @@
+# Buildozer-generated folders
+.buildozer/
+bin/
+
+# Python virtual environments
+venv/
+*.pyc
+__pycache__/
+
+# OS-specific files
+.DS_Store
+Thumbs.db
