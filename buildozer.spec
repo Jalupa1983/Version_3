@@ -10,7 +10,9 @@ source.dir = .
 source.main = main.py
 version = 0.1
 icon.filename = images/fdwc.png
-orientation = portrait  # portrait, landscape, or reverse
+
+# Supported orientations: landscape, portrait, portrait-reverse, landscape-reverse
+orientation = portrait
 
 # -------------------------
 # Files to Include
@@ -25,7 +27,7 @@ requirements = python3,kivy,plyer,android
 # -------------------------
 # Permissions
 # -------------------------
-android.permissions = INTERNET, WRITE_EXTERNAL_STORAGE, READ_EXTERNAL_STORAGE
+android.permissions = INTERNET,WRITE_EXTERNAL_STORAGE,READ_EXTERNAL_STORAGE
 
 # -------------------------
 # Android API / NDK Settings
@@ -39,13 +41,13 @@ android.ndk_api = 21
 # -------------------------
 # Architecture
 # -------------------------
-android.archs = arm64-v8a, armeabi-v7a
+android.archs = arm64-v8a,armeabi-v7a
 
 # -------------------------
 # App Storage & Backup
 # -------------------------
 android.allow_backup = True
-android.private_storage = True  # store data in app-private folder
+android.private_storage = True
 
 # -------------------------
 # Python-for-Android
@@ -64,10 +66,10 @@ android.keyboard = True
 # -------------------------
 # Logging
 # -------------------------
-log_level = 2       # 0 = errors, 1 = info, 2 = debug
-warn_on_root = 1    # warn if running buildozer as root
+log_level = 2
+warn_on_root = 1
 
 # -------------------------
 # Output Directory
 # -------------------------
-# bin_dir = ./bin  # default is fine
+# bin_dir = ./bin
