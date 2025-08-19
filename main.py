@@ -1,12 +1,13 @@
 # Standard library imports
 import calendar
 from calendar import monthrange
+from datetime import date, datetime, timedelta
+from dateutil.relativedelta import relativedelta
+from io import BytesIO
 import json
 import os
 import random
 import webbrowser
-from datetime import date, datetime, timedelta
-from io import BytesIO
 from pathlib import Path
 
 # Kivy imports
@@ -285,6 +286,28 @@ class MainScreen(Screen):
     def on_enter(self):
         self.update_screen()
 
+    def clean_time_message(self, clean_date_str):
+        """Return a human-readable string for clean time (years, months, days)."""
+        clean_date = date.fromisoformat(clean_date_str)
+        today = date.today()
+        delta = relativedelta(today, clean_date)
+
+        if delta.years == 0 and delta.months == 0:
+            return f"{delta.days} day{'s' if delta.days != 1 else ''}"
+
+        parts = []
+        if delta.years > 0:
+            parts.append(f"{delta.years} year{'s' if delta.years > 1 else ''}")
+        if delta.months > 0:
+            parts.append(f"{delta.months} month{'s' if delta.months > 1 else ''}")
+        if delta.days > 0:
+            parts.append(f"{delta.days} day{'s' if delta.days > 1 else ''}")
+
+        if len(parts) > 1:
+            return ", ".join(parts[:-1]) + " and " + parts[-1]
+        else:
+            return parts[0]
+
     def update_screen(self):
         data = load_user_data()
         if not data:
@@ -322,7 +345,9 @@ class MainScreen(Screen):
             else:
                 message = random.choice(motivational_messages)
 
-            self.label.text = f"{name}, you have been clean for {days} days!\n\n{message}"
+            # Use the new clean_time_message function
+            pretty_time = self.clean_time_message(clean_date)
+            self.label.text = f"{name}, you have been clean for {pretty_time}!\n\n{message}"
 
             if image_path and os.path.exists(image_path):
                 self.top_image.source = image_path
@@ -336,6 +361,7 @@ class MainScreen(Screen):
 
 
 DATA_FILE = Path("JSON_files/user_data.json")
+
 
 class HomeScreen(Screen):
     def __init__(self, **kwargs):

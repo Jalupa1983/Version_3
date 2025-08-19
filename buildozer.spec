@@ -4,11 +4,12 @@
 # App Information
 # -------------------------
 title = From Darkness We Climb
-package.name = clean_time_tracker
+package.name = FromDarknessWeClimb
 package.domain = org.example
 source.dir = .
 source.main = main.py
-version = 0.1
+version = 1.0.0
+android.version_code = 1
 icon.filename = images/fdwc.png
 
 # Supported orientations: landscape, portrait, portrait-reverse, landscape-reverse
@@ -22,7 +23,7 @@ source.include_exts = py,png,json,txt
 # -------------------------
 # Python Requirements
 # -------------------------
-requirements = python3,kivy,plyer,android
+requirements = python3,python-dateutil,kivy,plyer,android
 
 # -------------------------
 # Permissions
@@ -60,6 +61,14 @@ p4a.bootstrap = sdl2
 # -------------------------
 fullscreen = 0
 android.keyboard = True
+
+# -------------------------
+# Signing configuration
+# -------------------------
+android.release_keystore = /home/jason/Documents/Version_3/my-release-key.keystore
+android.keystore_password = FromDarknessWeClimb
+android.keyalias_name = fdwc-key
+android.keyalias_password = FromDarknessWeClimb
 
 [buildozer]
 
