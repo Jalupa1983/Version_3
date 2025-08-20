@@ -5,7 +5,7 @@
 # -------------------------
 title = From Darkness We Climb
 package.name = FromDarknessWeClimb
-package.domain = org.example
+package.domain = org.jalupa.fdwc
 source.dir = .
 source.main = main.py
 version = 1.0.0
